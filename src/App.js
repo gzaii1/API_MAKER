@@ -1,13 +1,16 @@
 import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
-import Main from './Main'
+import {Header, Middle, Left, Footer, Main} from '@components'
 import './App.css'
 
 function App() {
   return (
-    <BrowserRouter>
-      <Main />
-    </BrowserRouter>   
+    <>
+      <Header />
+      <Middle>
+        <Left /> <Main />
+      </Middle>
+      <Footer />
+    </>   
   )
 }
 

@@ -1,8 +1,5 @@
 import React, {useState} from 'react';
-import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from '@material-ui/core/styles';
-import {useDispatch, useSelector} from 'react-redux';
-import { Button } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
 import { LeftStyles } from '@styles'
