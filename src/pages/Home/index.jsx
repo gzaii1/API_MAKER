@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux';
-import {HomeActions} from '../../actions'
-import {Header} from '../../components'
+import {HomeActions} from '@actions'
+import {Header, Left, Footer} from '@components'
 
 const Home = (props) =>{
     const dispatch = useDispatch()
@@ -25,9 +25,8 @@ const Home = (props) =>{
     }, [])
 return <>
 <Header></Header>
-    {
-        JSON.stringify(Home.user)
-    }
+<Left></Left>
+<Footer></Footer>
 </>
 }
 

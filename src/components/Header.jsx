@@ -1,37 +1,29 @@
 import React from 'react';
-import { withStyles, createStyles } from '@material-ui/core/styles';
+import AddIcon from '@material-ui/icons/Add';
+import { withStyles } from '@material-ui/core/styles';
 import {useDispatch, useSelector} from 'react-redux';
 import { Button } from '@material-ui/core'
-const styles = createStyles({
-    root: {
-        width:'100vw',
-        height:'3rem',
-        backgroundColor:'#262626',
-        zIndex: '90',
-        display: 'flex',
-        flexDirection: 'row',
-        boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.37)',
-        color:'#FFFFFF',
-        alignItems:'center'
-    },
-    leftBtnGrp: {
-        marginLeft:'1rem',
-        // color:'#FFFFFF'
-    }
-  });
+import { HeadStyles } from '@styles'
+import { getI18n } from '@i18n'
+/* 获取i18n */
+const i18n = getI18n('zhCN/components/Header')
 
 /* 头部主体 */
-const Board = withStyles(styles)(({classes, children}) => 
+const Board = withStyles(HeadStyles)(({classes, children}) => 
 <div className={classes.root}> {children} </div>);
 
 /* 左侧按钮 */
-const LeftBtnGrp = withStyles(styles)(({classes, children}) =>
+const LeftBtnGrp = withStyles(HeadStyles)(({classes, children}) =>
 <div className={classes.leftBtnGrp}>
-  <Button>点击</Button>
+  <Button 
+    className={classes.addBtn} 
+    startIcon={<AddIcon />}
+    >{i18n.button_text}
+  </Button>
 </div>);
 
 /* 中间部分 */
-const MiddleArea = withStyles(styles)(({classes, children}) =>
+const MiddleArea = withStyles(HeadStyles)(({classes, children}) =>
 <div className={classes.leftBtnGrp}>
   <Button>点击</Button>
 </div>);
