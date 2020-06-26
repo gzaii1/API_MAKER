@@ -2,7 +2,7 @@ import React from 'react'
 import Home from './pages/Home'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
- const Routes = (props) => {
+ const Routes = () => {
     return (
         <BrowserRouter>
             <Switch>
