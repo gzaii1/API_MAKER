@@ -3,11 +3,12 @@ import {useDispatch, useSelector} from 'react-redux';
 import {HomeActions} from '@actions'
 import { withStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core'
-import { HomeStyles } from '@styles'
+import { HomeStyles, LeftStyles } from '@styles'
 import { getI18n } from '@i18n'
 import { globalEvent, debounce } from '@utils'
 import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUp from '@material-ui/icons/ArrowDropUp'
+import ChatIcon from '@material-ui/icons/Chat';
 import { Tooltip } from '@components'
 
 const i18n = getI18n('zhCN/components/Header')
@@ -76,15 +77,55 @@ const InputArea = withStyles(HomeStyles)(({classes, children})=>{
         </div>
 })
 
+/* 设定返回体类型 */
+const TypeArea = withStyles(HomeStyles)(({classes, children})=>{
+    const [selected, setSelected] = useState('json')
+    const typeLst = [
+        {label:'JSON', value:'json'},
+        {label:'websocket', value:'websocket'},
+        {label:'上传文件', value:'update'},
+        {label:'下载文件', value:'download'},
+        {label:'excel导出', value:'excel'},
+    ]
+
+    return <div className={classes.typeArea}>
+        <div className={classes.mainTabs}>
+            {
+                typeLst.map((select, idx)=>
+                     <div key={`tab${idx}`} 
+                     className={`${classes.oneTab} ${select.value === selected?classes.selected:''}`} 
+                        onClick={()=>setSelected(select.value)}
+                        >
+                        <span className={classes.tabSpan}>{select.label}</span>
+                    </div>)
+            }
+
+        </div>
+        <div className={classes.chatIconBox}>
+            <span className={classes.chatIconSpan}>意见反馈</span>
+            <ChatIcon className={classes.chatIcon} />
+
+        </div>
+
+    </div>
+}) 
+
+/* 设定参数区域 */
+const ParamsArea = withStyles(HomeStyles)(({classes})=>{
+    return <div className={classes.paramsArea}>参数</div>
+})
+
 /* 主页布局 */
 const Home = withStyles(HomeStyles)(({classes}) =>{
     const dispatch = useDispatch()
     const datas = [{url:'xxxxxxxxxxxxxxx'}, {url:'xxx2'}]
+
     useEffect(()=>{
         const Alex = {
             name:'alex',
             age: 18
         }
+        // console.log('classes', )
         dispatch(HomeActions.createUser(Alex))
     }, [])
 
@@ -93,6 +134,10 @@ return <div className={classes.root}>
         <Tabs dataMap={datas}></Tabs>
         <InputLabel />
         <InputArea />
+        <TypeArea>
+        
+        </TypeArea>
+        <ParamsArea />
     </ApiConfig>
     {/* <Tooltip label='POST' defaultSelect='get' dataList={lst}/> */}
 </div>

@@ -73,8 +73,10 @@ export const LeftStyles = createStyles({
         height:'calc(100%)',
         textAlign:'center',
         cursor:'pointer',
+        color:'#666666',
         borderBottom:'1px solid #eaeaea',
         '&:hover':{
+            color:'#1a1a1a',
             // borderBottom:'.15rem solid #f0753e',
         }
     },

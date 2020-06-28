@@ -120,6 +120,7 @@ export const HomeStyles = createStyles({
         color:'#505050',
         backgroundColor:"#FAFAFA",
         background:'#ECECEC',
+        zIndex:'9999',
         boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.37)'
     },
     iptTotalLi:{
@@ -161,5 +162,80 @@ export const HomeStyles = createStyles({
                 border:'none'
             }
         }
+    },
+    typeArea:{
+        display:'flex',
+        alignItems:'flex-end',
+        height:'3rem',
+        width:'100%',
+        backgroundColor:'#FAFAFA',
+        borderBottom:'1px solid #EAEAEA',        
+    },
+    mainTabs:{
+        height:'2.4rem',
+        width:'100%',
+        margin:'0',
+        padding:'0',
+        display:'flex',
+        justifyContent:'left',
+        // alignItems:''
+    },
+    oneTab:{
+        lineHeight:'2.5rem',
+        maxWidth:'8rem',
+        minWidth:'5rem',
+        overflow:'hidden',
+        textOverflow:'ellipsis',
+        whiteSpace:'nowrap',
+        height:'calc(100%)',
+        textAlign:'center',
+        cursor:'pointer',
+        margin:'0 .5rem',
+        color:'#666666',
+        fontSize:'.9rem',
+        borderBottom:'1px solid #eaeaea',
+        '&:hover':{
+            color:'#1A1A1A',
+            // borderBottom:'.15rem solid #f0753e',
+            fontWeight:'400'
+        }
+    },
+    chatIconBox:{
+        width: '6rem',
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'right',
+        alignItems: 'center',
+        cursor:'pointer',
+        color:'#808080',
+    },
+    chatIconSpan:{
+        fontSize:'.8rem',
+        marginRight:'.5rem'
+    },
+    chatIcon:{
+        height:'100%',
+        fontSize: '.9rem',
+        color: '#808080',
+        // marginLeft:'1rem',
+    },
+    tabSpan:{
+        // color:'#666666',
+        fontFamily:'"OpenSans", Helvetica, Arial, sans-serif;',
+        fontSize:'.9rem'
+    },
+    selected:{
+        // color:'#1A1A1A',
+        borderBottom:'.15rem solid #f0753e',
+        // fontWeight:'400'
+    },
+    /* 参数区域 */
+    paramsArea:{
+        display:'flex',
+        alignItems:'flex-end',
+        height:'3rem',
+        width:'100%',
+        backgroundColor:'#FAFAFA',
+        borderBottom:'1px solid #EAEAEA',     
     }
 })
