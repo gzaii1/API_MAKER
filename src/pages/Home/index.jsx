@@ -112,7 +112,9 @@ const TypeArea = withStyles(HomeStyles)(({classes, children})=>{
 
 /* 设定参数区域 */
 const ParamsArea = withStyles(HomeStyles)(({classes})=>{
-    return <div className={classes.paramsArea}>参数</div>
+    return <div className={classes.paramsArea}>
+        
+    </div>
 })
 
 /* 主页布局 */
