@@ -87,7 +87,7 @@ export const HomeStyles = createStyles({
         color:'#505050',
         marginLeft:'1rem',
         height:'100%',
-        width:'calc(55vw + 5rem)',
+        width:'100%',
         display:'flex',
     },
     iptLeftBtn:{
@@ -142,8 +142,8 @@ export const HomeStyles = createStyles({
         alignSelf:'flex-start', 
         background:'#ECECEC',
         color:'#505050',
-        width:'30rem',
-        maxWidth:'55vw', 
+        padding:'0 0 0 1rem',
+        width:'calc(100% - 9rem)', 
         height:'2rem', 
         margin:'.5rem 0 .5rem 0',
         border:'1px solid #D4D4D4',
@@ -233,9 +233,84 @@ export const HomeStyles = createStyles({
     paramsArea:{
         display:'flex',
         alignItems:'flex-end',
-        height:'3rem',
+        height:'2rem',
         width:'100%',
         backgroundColor:'#FAFAFA',
-        borderBottom:'1px solid #EAEAEA',     
+        // borderBottom:'1px solid #EAEAEA',     
+        color:'#808080',
+        fontSize:'.95rem',
+        lineHeight:'2rem',
+        padding:'0 0 0 1rem'
+    },
+    /* 参数table */
+    paramsTable:{
+        display:'flex',
+        flexDirection:'column',
+        '& .row':{
+            display:'flex',
+            width:'100%',
+            justifyContent:'space-between',
+            borderTop:'1px solid #EAEAEA',
+            alignSelf:'center',
+            height:'2.2rem',
+            '& > div':{
+                width:'100%',
+                '& > span':{
+                    lineHeight:'2.2rem',
+                    marginLeft:'.5rem'
+                }
+            },
+            '& > div:nth-of-type(1)':{
+                borderRight:'1px solid #EAEAEA',
+                flexShrink:'4'
+            },
+            '& > div:nth-of-type(2)':{
+                borderRight:'1px solid #EAEAEA',
+                flexShrink:'3'
+            },
+            '& > div:nth-of-type(3)':{
+                flexShrink:'3'
+            }
+        },
+        '& .title':{
+            '& span':{
+                fontWeight:'bold',
+                textOverflow:'ellipsis',
+                cursor:'default',
+                fontSize:'.95rem',
+                color:'#505050'
+            }
+        },
+        '& .normal':{
+            cursor:'text',
+            '& span':{
+                textOverflow:'ellipsis',
+                fontSize:'.9rem',
+                color:'#505050'
+            }
+        },
+        '& .blank':{
+            borderBottom:'1px solid #EAEAEA',
+            cursor:'text',
+        },
+
+    },
+    /* 响应内容区域 */
+    responseArea:{
+        display:'flex',
+        alignItems:'flex-end',
+        height:'2rem',
+        width:'100%',
+        backgroundColor:'#FAFAFA',
+        borderBottom:'1px solid #EAEAEA',
+        color:'#A9A9A9',
+        fontSize:'.95rem',
+        lineHeight:'2rem',
+        padding:'0 0 0 1rem'
+    },
+    responseBody:{
+        width:'100%',
+        height:'auto',
+
     }
 })

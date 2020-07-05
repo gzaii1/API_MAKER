@@ -112,10 +112,75 @@ const TypeArea = withStyles(HomeStyles)(({classes, children})=>{
 
 /* 设定参数区域 */
 const ParamsArea = withStyles(HomeStyles)(({classes})=>{
-    return <div className={classes.paramsArea}>
-        
-    </div>
+    const lst = [{
+        type:'normal',
+        data:{
+            key:'name',
+            value:'张三',
+            direction:'变量'
+        }
+    }];
+    
+    const Row = ({row, children})=> <div 
+        className={`${row.type||'normal'} row`}
+        onClick={()=>{
+            if(row.type === 'blank'){
+                console.log('blank', row)
+            }
+        }}
+        >{children}</div>
+
+    return <> 
+        <div className={classes.paramsArea}>
+            参数列表:
+        </div>
+        {/* 参数列表table */}
+        <div className={classes.paramsTable}>
+            {
+                [{
+                    type: 'title',
+                    data: {
+                        key:'KEY',
+                        value:'VALUE',
+                        direction:'DIRECTION'
+                    }
+                }, ...lst, {
+                    type: 'blank',
+                    data: {
+                        key:'',
+                        value:'',
+                        direction:''
+                    }
+                }].map((row, idx_1) =>{
+                    const dataList = Object.entries(row.data)
+                    return <Row key={`row${idx_1}`} row={row}>
+                        {
+                            dataList.map((val, idx_2)=> <div key={`data${idx_1}-${idx_2}`} onClick={()=>{
+                                console.log(val[1])
+                            }}><span>{val[1]}</span></div>)
+                        }
+                    </Row>
+                })
+            }
+            {/* <Title> */}
+            {/* </Title> */}
+        </div>
+    </>
 })
+
+/* Response: 返回内容 */
+const ResponseArea = withStyles(HomeStyles)(({classes})=>{
+    return <> 
+        <div className={classes.responseArea}>
+            <span>Response</span>
+        </div>
+        <div className={classes.responseBody}>
+            response
+        </div>
+    </>
+})
+
+
 
 /* 主页布局 */
 const Home = withStyles(HomeStyles)(({classes}) =>{
@@ -136,10 +201,13 @@ return <div className={classes.root}>
         <Tabs dataMap={datas}></Tabs>
         <InputLabel />
         <InputArea />
-        <TypeArea>
+        <TypeArea />
         
-        </TypeArea>
         <ParamsArea />
+
+        <ResponseArea />
+        
+
     </ApiConfig>
     {/* <Tooltip label='POST' defaultSelect='get' dataList={lst}/> */}
 </div>
