@@ -112,16 +112,27 @@ const TypeArea = withStyles(HomeStyles)(({classes, children})=>{
 
 /* 设定参数区域 */
 const ParamsArea = withStyles(HomeStyles)(({classes})=>{
-    const lst = [{
-        type:'normal',
-        data:{
-            key:'name',
-            value:'张三',
-            direction:'变量'
-        }
-    }];
+    const [tableLst, setTableLst] = useState([
+        {
+            type:'normal',
+            status:'static',
+            data:{
+                key:'name',
+                value:'张三',
+                direction:'变量'
+            },
+        },{
+            type: 'blank',
+            status:'static',
+            data: {
+                key:'',
+                value:'',
+                direction:''
+            },
+        }]);
     
-    const Row = ({row, children})=> <div 
+    /* 表格每行 */
+    const Row = ({row, children, idx})=> <div 
         className={`${row.type||'normal'} row`}
         onClick={()=>{
             if(row.type === 'blank'){
@@ -130,34 +141,51 @@ const ParamsArea = withStyles(HomeStyles)(({classes})=>{
         }}
         >{children}</div>
 
+    /* table选中时 */
+    function onFocus(e){
+        e.target.classList = ['editing']
+    }
+    /* table离开时 */
+    function onBlur(e){
+        e.target.classList = ['static']
+    }
+
     return <> 
         <div className={classes.paramsArea}>
             参数列表:
         </div>
         {/* 参数列表table */}
         <div className={classes.paramsTable}>
+            <div className='title row'>
+                <div className={classes.tableBox}>
+                    <div style={{height:'2.2rem'}}><span>KEY</span></div>
+                </div>
+                <div className={classes.tableBox}>
+                    <div><span>VALUE</span></div>
+                </div>
+                <div className={classes.tableBox}>
+                    <div><span>DIRECTION</span></div>
+                </div>
+            </div>
             {
                 [{
                     type: 'title',
+                    status:'static',
                     data: {
                         key:'KEY',
                         value:'VALUE',
                         direction:'DIRECTION'
                     }
-                }, ...lst, {
-                    type: 'blank',
-                    data: {
-                        key:'',
-                        value:'',
-                        direction:''
-                    }
-                }].map((row, idx_1) =>{
+                }, ...tableLst].map((row, idx_1) =>{
+                    console.log(row, 'row')
                     const dataList = Object.entries(row.data)
-                    return <Row key={`row${idx_1}`} row={row}>
+                    return <Row key={`row${idx_1}`} row={row} idx={idx_1 - 1}>
                         {
-                            dataList.map((val, idx_2)=> <div key={`data${idx_1}-${idx_2}`} onClick={()=>{
-                                console.log(val[1])
-                            }}><span>{val[1]}</span></div>)
+                            dataList.map((val, idx_2)=> 
+                                <div key={`data${idx_1}-${idx_2}`} className={classes.tableBox}>
+                                <input type="text" className='static' onFocus={onFocus} onBlur={onBlur} />
+                                <div className='rowSpan'><span>{val[1]}</span></div>
+                            </div>)
                         }
                     </Row>
                 })

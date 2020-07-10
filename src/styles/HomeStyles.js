@@ -252,11 +252,11 @@ export const HomeStyles = createStyles({
             justifyContent:'space-between',
             borderTop:'1px solid #EAEAEA',
             alignSelf:'center',
-            height:'2.2rem',
+            // height:'2.2rem',
             '& > div':{
                 width:'100%',
                 '& > span':{
-                    lineHeight:'2.2rem',
+                    // lineHeight:'2.2rem',
                     marginLeft:'.5rem'
                 }
             },
@@ -311,6 +311,41 @@ export const HomeStyles = createStyles({
     responseBody:{
         width:'100%',
         height:'auto',
-
+    },
+    tableBox:{
+        display:'flex',
+        '& .editing':{
+            color: '#505050',
+            background:'#FFF',
+            // height:'96%'
+        },
+        '& .static':{
+            color:'rgba(0,0,0,0)'
+        },
+        '& .rowSpan':{
+            width:'10%',
+            height:'2.2rem',
+            lineHeight:'2.2rem',
+            transform:'translate(-893%, 0)',
+            zIndex:'-5',
+            '& span':{
+                whiteSpace:'nowrap'
+            }
+        },
+        '& input':{
+            width:'90%',
+            background:'none',  
+            outline:'none',
+            border:'none',
+            // color: '#505050',
+            fontSize: '.9rem',
+            lineHeight:'2.2rem',
+            textOverflow: 'ellipsis',
+            '&:focus':{   
+                // border:'none'
+                zIndex:-1,
+                border:'none'
+            }
+        },
     }
 })
